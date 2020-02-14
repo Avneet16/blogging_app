@@ -13,6 +13,7 @@
 <div class="page-header">
     {% if user.is_authenticated %}
         <div class="top-menu">
+            <a>Hello, {{ user.username }}<small><a href="{% url 'logout' %}"> (Log out)</a></small></a>
             <a href="{% url 'post_new' %}"><i class="fas fa-plus-circle fa-2x"></i></a>
             <a href="{% url 'post_draft' %}"><i class="fab fa-firstdraft fa-2x"></i></a>
         </div>
