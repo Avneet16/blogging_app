@@ -38,3 +38,13 @@ h1,h2,h3 {
 .post-form-blog .btn-primary{
     float: right;
 }
+
+.top-menu{
+    color: white;
+    float: right;
+    font-size: 26px;
+    margin-right: 20px;
+}
+.top-menu a,.top-menu a:hover{
+    color: white;
+}
