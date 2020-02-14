@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>My blog</title>
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700&display=swap" rel="stylesheet">
@@ -16,6 +16,10 @@
             <a href="{% url 'post_new' %}"><i class="fas fa-plus-circle fa-2x"></i></a>
             <a href="{% url 'post_draft' %}"><i class="fab fa-firstdraft fa-2x"></i></a>
         </div>
+    {% else %}
+        <a href="{% url 'login' %}" class="top-menu"><i class="fas fa-sign-in-alt fa-2x"></i></a>
+
+
     {% endif %}
     <h1><a href="{% url "post_list" %}" class="">My Blog App</a></h1>
 </div>
