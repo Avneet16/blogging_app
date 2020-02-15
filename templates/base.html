@@ -14,8 +14,8 @@
     {% if user.is_authenticated %}
         <div class="top-menu">
             <a>Hello, {{ user.username }}<small><a href="{% url 'logout' %}"> (Log out)</a></small></a>
-            <a href="{% url 'post_new' %}"><i class="fas fa-plus-circle fa-2x"></i></a>
-            <a href="{% url 'post_draft' %}"><i class="fab fa-firstdraft fa-2x"></i></a>
+            <a href="{% url 'post_new' %}">New Blog<i class="fas fa-plus-circle"></i></a>
+            <a href="{% url 'post_draft' %}">draft list<i class="fab fa-firstdraft"></i></a>
         </div>
     {% else %}
         <a href="{% url 'login' %}" class="top-menu"><i class="fas fa-sign-in-alt fa-2x"></i></a>
