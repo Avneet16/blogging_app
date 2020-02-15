@@ -1,7 +1,9 @@
+from django.contrib.auth import login
+from django.contrib.auth.models import User
 from django.shortcuts import render,get_object_or_404,redirect
 from django.utils import timezone
 
-from my_site.forms import PostForm,CommentForm
+from my_site.forms import PostForm, CommentForm, UserForm
 from django.contrib.auth.decorators import login_required
 from .models import Post,Comment
 
@@ -56,7 +58,7 @@ def post_delete(request,pk):
 @login_required
 def post_draft(request):
     post=Post.objects.filter(published_date__isnull=True).order_by('-created_date')
-    stuff_for_frontend={'posts':post}
+    stuff_for_frontend = {'posts':post}
     return render(request,'my_site/post_draft.html',stuff_for_frontend)
 
 @login_required
@@ -92,5 +94,14 @@ def approve_comment(request,pk):
     comment.approve()
     return redirect('post_detail',pk=comment.post.pk)
 
-
+def signup(request):
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid():
+            new_user = User.objects.create_user(**form.cleaned_data)
+            login(request, new_user)
+            return redirect('/')
+    else:
+        form = UserForm()
+    return render(request, 'my_site/signup.html', {'form': form})
 

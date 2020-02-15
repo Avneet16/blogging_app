@@ -15,6 +15,8 @@ SECRET_KEY = '^hfh0-(e)gm=4%py)7a7mnicpawn*6xc$kcoc1d#ahuy&w25^s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+CRISPY_TEMPLPATE_PACK= "bootstrap4"
+
 ALLOWED_HOSTS = []
 
 LOGIN_REDIRECT_URL='post_list'
@@ -24,6 +26,7 @@ LOGOUT_REDIRECT_URL='post_list'
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
     'my_site',
     'django.contrib.admin',
     'django.contrib.auth',
