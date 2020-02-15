@@ -15,6 +15,10 @@
         {% if user.is_authenticated %}
             <a href="{% url 'post_edit' pk=post.pk %}"><i class="fas fa-edit fa-2x" style="color: #000000"></i></a>
         {% endif %}
+        <a href="{% url 'post_delete' pk=post.pk %}" class="btn btn-danger"
+           onclick="return confirm('Are u sure u want to delete this post')">
+            <i class="fas fa-trash"></i>
+        </a>
         <h1>{{ post.title }}</h1>
         <p>{{ post.text| markdown | safe }}</p>
     </div>

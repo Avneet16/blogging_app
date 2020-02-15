@@ -48,6 +48,12 @@ def post_edit(request,pk):
     return render(request,'my_site/post_edit.html',stuff_for_frontend)
 
 @login_required
+def post_delete(request,pk):
+    post=get_object_or_404(Post,pk=pk)
+    post.delete()
+    return redirect('/',pk=pk)
+
+@login_required
 def post_draft(request):
     post=Post.objects.filter(published_date__isnull=True).order_by('-created_date')
     stuff_for_frontend={'posts':post}
@@ -85,5 +91,6 @@ def approve_comment(request,pk):
     comment=get_object_or_404(Comment,pk=pk)
     comment.approve()
     return redirect('post_detail',pk=comment.post.pk)
+
 
 
